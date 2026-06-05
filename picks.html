@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIFA World Cup 2026 - Group Picks</title>
+<meta name="description" content="FIFA World Cup 2026 group picks by person, showing each group, country and owner.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500&display=swap');
+
+  :root {
+    --bg:#0A0E1A;
+    --bg-card:#141829;
+    --bg-row:#1C2235;
+    --border:#2A3050;
+    --text:#E8EAF2;
+    --text-sub:#7A82A8;
+    --text-muted:#4A5280;
+    --gold:#C9A84C;
+    --A:#E74C3C; --B:#E67E22; --C:#F0C040; --D:#2ECC71;
+    --E:#1ABC9C; --F:#5DADE2; --G:#A569BD; --H:#EC407A;
+    --I:#FF7043; --J:#26C6DA; --K:#9CCC65; --L:#FFA726;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    min-height: 100vh;
+  }
+  .page {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 24px 20px 32px;
+    background: var(--bg);
+    box-shadow: 0 0 60px rgba(0,0,0,0.8);
+    min-height: 100vh;
+  }
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    flex-wrap: wrap;
+    border-bottom: 2.5px solid var(--gold);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 5vw, 36px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--gold);
+  }
+  .sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(11px, 2vw, 14px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-sub);
+    margin-top: 4px;
+  }
+  .nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .nav-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(11px, 1.5vw, 13px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 4px;
+    border: 1.5px solid var(--border);
+    background: var(--bg-row);
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-btn.active {
+    background: var(--gold);
+    color: var(--bg);
+    border-color: var(--gold);
+  }
+  .picks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .group-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 0;
+  }
+  .group-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .group-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .person {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--gold);
+    text-align: right;
+  }
+  .country-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(42,48,80,0.55);
+  }
+  .country-row:last-child { border-bottom: none; }
+  .country {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(13px, 1.8vw, 16px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .group-code {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  .flag {
+    width: 18px;
+    height: 13px;
+    object-fit: cover;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  .footer {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .footer p {
+    font-size: clamp(10px, 1.4vw, 12px);
+    color: var(--text-muted);
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.5px;
+  }
+
+  @media screen and (max-width: 720px) {
+    .picks-grid { grid-template-columns: minmax(0, 1fr); }
+    .header { flex-direction: column; }
+    .nav { justify-content: flex-start; }
+    .page { padding: 16px 14px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div>
+      <h1>Group Picks</h1>
+      <div class="sub">Group &bull; Country &bull; Person</div>
+    </div>
+    <div class="nav">
+      <a href="index.html" class="nav-btn">&#128197; Schedule</a>
+      <a href="groups.html" class="nav-btn">&#127942; Groups</a>
+      <a href="picks.html" class="nav-btn active">Group Picks</a>
+    </div>
+  </div>
+
+  <div class="picks-grid" id="picks-grid"></div>
+
+  <div class="footer">
+    <p>FIFA World Cup 2026 &bull; Group pool</p>
+    <p>Each person owns every country in their assigned group</p>
+  </div>
+</div>
+
+<script>
+const GROUPS = {
+  A: ['Mexico','South Korea','South Africa','Czechia'],
+  B: ['Canada','Switzerland','Qatar','Bosnia'],
+  C: ['Brazil','Morocco','Scotland','Haiti'],
+  D: ['USA','Australia','Paraguay','Turkiye'],
+  E: ['Germany','Ivory Coast','Ecuador','Curacao'],
+  F: ['Netherlands','Japan','Tunisia','Sweden'],
+  G: ['Belgium','Iran','Egypt','New Zealand'],
+  H: ['Spain','Uruguay','Saudi Arabia','Cape Verde'],
+  I: ['France','Senegal','Norway','Iraq'],
+  J: ['Argentina','Algeria','Austria','Jordan'],
+  K: ['Portugal','Colombia','Uzbekistan','Congo DR'],
+  L: ['England','Croatia','Ghana','Panama'],
+};
+
+const POOL = {
+  A: 'T Dema',
+  B: 'D Tshering',
+  C: 'J Lhamo',
+  D: 'D Phuntsho',
+  E: 'W Dema',
+  F: 'K Choden',
+  G: 'D Bidha',
+  H: 'T Peday',
+  I: 'P Drakpa',
+  J: 'N Dorji',
+  K: 'S Tenzin',
+  L: 'K Wangmo',
+};
+
+const FLAGS = {
+  'Algeria':'dz','Argentina':'ar','Australia':'au','Austria':'at',
+  'Belgium':'be','Bosnia':'ba','Brazil':'br','Canada':'ca',
+  'Cape Verde':'cv','Colombia':'co','Congo DR':'cd','Croatia':'hr',
+  'Curacao':'cw','Czechia':'cz','Ecuador':'ec','Egypt':'eg',
+  'England':'gb-eng','France':'fr','Germany':'de','Ghana':'gh',
+  'Haiti':'ht','Iran':'ir','Iraq':'iq','Ivory Coast':'ci',
+  'Japan':'jp','Jordan':'jo','Mexico':'mx','Morocco':'ma',
+  'Netherlands':'nl','New Zealand':'nz','Norway':'no','Panama':'pa',
+  'Paraguay':'py','Portugal':'pt','Qatar':'qa','Saudi Arabia':'sa',
+  'Scotland':'gb-sct','Senegal':'sn','South Africa':'za',
+  'South Korea':'kr','Spain':'es','Sweden':'se','Switzerland':'ch',
+  'Tunisia':'tn','Turkiye':'tr','Uruguay':'uy','USA':'us',
+  'Uzbekistan':'uz',
+};
+
+function flagImg(team) {
+  const code = FLAGS[team];
+  if (!code) return '';
+  return `<img class="flag" src="https://flagcdn.com/w20/${code}.png" alt="">`;
+}
+
+function render() {
+  const grid = document.getElementById('picks-grid');
+  grid.innerHTML = '';
+  Object.entries(GROUPS).forEach(([grp, countries]) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.style.borderLeftColor = `var(--${grp})`;
+    const rows = countries.map(country => `
+      <div class="country-row">
+        <span class="country">${flagImg(country)}${country}</span>
+        <span class="group-code" style="color:var(--${grp})">Group ${grp}</span>
+      </div>`).join('');
+    card.innerHTML = `
+      <div class="group-head">
+        <span class="group-name" style="color:var(--${grp})">Group ${grp}</span>
+        <span class="person">${POOL[grp]}</span>
+      </div>
+      ${rows}`;
+    grid.appendChild(card);
+  });
+}
+
+render();
+</script>
+</body>
+</html>

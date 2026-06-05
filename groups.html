@@ -7,8 +7,6 @@
 <meta name="description" content="FIFA World Cup 2026 group stage draw. All 12 groups, 48 teams. Standings updated as the tournament progresses.">
 <meta property="og:title" content="FIFA World Cup 2026 - Groups">
 <meta property="og:description" content="All 12 groups and 48 teams for the 2026 FIFA World Cup. Standings updated live as the tournament progresses.">
-<meta property="og:url" content="https://kingdoggydog.github.io/worldcup2026/groups.html">
-<link rel="canonical" href="https://kingdoggydog.github.io/worldcup2026/groups.html">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N0ENDBHCS4"></script>
 <script>
@@ -62,11 +60,11 @@
   }
 
   /* HEADER */
-  .header {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    border-bottom: 2.5px solid var(--gold);
-    padding-bottom: 12px; margin-bottom: 14px; flex-shrink: 0;
-    gap: 16px; flex-wrap: wrap;
+	  .header {
+	    display: flex; flex-direction: column; align-items: stretch;
+	    border-bottom: 2.5px solid var(--gold);
+	    padding-bottom: 12px; margin-bottom: 14px; flex-shrink: 0;
+	    gap: 16px; flex-wrap: wrap;
   }
   .header h1 {
     font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
@@ -80,9 +78,10 @@
     letter-spacing: 2px; text-transform: uppercase;
     color: var(--text-sub); margin-top: 4px;
   }
-  .header-right {
-    display: flex; flex-direction: column; gap: 8px; align-items: flex-end;
-  }
+	  .header-right {
+	    display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
+	    width: 100%;
+	  }
 
   /* NAV + CONTROLS ROW */
   .ctrl-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -98,10 +97,10 @@
     display: inline-block;
   }
   .nav-btn:hover, .ctrl-btn:hover { opacity: 0.8; }
-  .nav-btn.active {
-    background: var(--gold); color: #0A0E1A;
-    border-color: var(--gold);
-  }
+	  .nav-btn.active {
+	    background: var(--gold); color: #0A0E1A;
+	    border-color: var(--gold);
+	  }
 
   .ctrl-label {
     font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
@@ -202,7 +201,15 @@
     border-left: 3px solid var(--highlight-bl);
     padding-left: 9px;
   }
-  .standings-table td.stat { color: var(--text-sub); font-size: 11px; font-weight: 400; }
+	  .standings-table td.stat { color: var(--text-sub); font-size: 11px; font-weight: 400; }
+
+	  .owner-pill {
+	    margin-left: auto;
+	    font-family: 'Barlow Condensed', sans-serif;
+	    font-weight: 700; font-size: 11px;
+	    color: var(--gold); letter-spacing: 1px;
+	    text-transform: uppercase;
+	  }
 
   /* FOOTER */
   .footer {
@@ -217,33 +224,18 @@
   }
   #version { color: var(--text-muted); font-style: italic; }
 
-  /* mobile coffee button */
-  #bmc-mobile {
-    display: none; text-align: center;
-    margin-top: 16px; padding-top: 12px;
-    border-top: 1px solid var(--border);
-  }
-  #bmc-mobile a {
-    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-    font-size: 14px; letter-spacing: 1px; text-transform: uppercase;
-    color: var(--gold); text-decoration: none;
-    border: 1.5px solid var(--gold); padding: 8px 20px;
-    border-radius: 4px; display: inline-block;
-  }
-
   /* RESPONSIVE */
   @media screen and (max-width: 900px) {
-    .groups-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    #bmc-mobile { display: block; }
+	    .groups-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .header { flex-direction: column; align-items: flex-start; }
     .header-right { align-items: flex-start; width: 100%; }
     .ctrl-row { flex-wrap: wrap; }
     select { width: 100%; }
     .page { padding: 16px 14px 24px 14px; }
   }
-  @media screen and (max-width: 480px) {
-    .groups-grid { grid-template-columns: 1fr; }
-  }
+	  @media screen and (max-width: 480px) {
+	    .groups-grid { grid-template-columns: 1fr; }
+	  }
 </style>
 </head>
 <body>
@@ -253,14 +245,15 @@
     <div>
       <h1>FIFA World Cup 2026</h1>
       <div class="sub">Group Stage Draw &bull; 12 Groups &bull; 48 Teams</div>
-      <div style="margin-top:8px">
-        <a href="https://kingdoggydog.github.io/worldcup2026/" class="nav-btn">&#128197; Schedule</a>
-      </div>
+	      <div style="margin-top:8px">
+	        <a href="index.html" class="nav-btn">&#128197; Schedule</a>
+	        <a href="picks.html" class="nav-btn">Group Picks</a>
+	      </div>
     </div>
     <div class="header-right">
-      <div class="ctrl-row">
-        <span class="ctrl-label">Highlight</span>
-        <select id="team-select">
+	      <div class="ctrl-row">
+	        <span class="ctrl-label">Highlight</span>
+	        <select id="team-select">
           <option value="none" selected>No highlight</option>
           <option value="Algeria">Algeria</option>
           <option value="Argentina">Argentina</option>
@@ -324,12 +317,8 @@
   <div class="groups-grid" id="groups-grid"></div>
 
   <div class="footer">
-    <p>FIFA World Cup 2026 &bull; USA / Canada / Mexico &bull; <span id="version">v1.22</span></p>
+    <p>FIFA World Cup 2026 &bull; USA / Canada / Mexico &bull; <span id="version">v1.23</span></p>
     <p>Top 2 per group + 8 best 3rd place teams advance to Round of 32</p>
-  </div>
-
-  <div id="bmc-mobile">
-    <a href="https://www.buymeacoffee.com/coolcato" target="_blank">☕ Buy me a coffee</a>
   </div>
 
 </div>
@@ -348,6 +337,22 @@ const GROUPS = {
   J: ['Argentina','Algeria','Austria','Jordan'],
   K: ['Portugal','Colombia','Uzbekistan','Congo DR'],
   L: ['England','Croatia','Ghana','Panama'],
+};
+
+// One person owns each World Cup group. Replace these placeholders with your real pool.
+const POOL = {
+  A: 'T Dema',
+  B: 'D Tshering',
+  C: 'J Lhamo',
+  D: 'D Phuntsho',
+  E: 'W Dema',
+  F: 'K Choden',
+  G: 'D Bidha',
+  H: 'T Peday',
+  I: 'P Drakpa',
+  J: 'N Dorji',
+  K: 'S Tenzin',
+  L: 'K Wangmo',
 };
 
 const GROUP_COLORS = {
@@ -433,6 +438,9 @@ const STANDINGS = {
   ],
 };
 
+const STANDINGS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ9bW7UghzsPOQlaCjufZIjHnPdQV3bN_kBcKMNjrZXJsxXPTgENbBGozlNyYZFbEPQkS0wY_Gle6sA/pub?gid=1199896396&single=true&output=csv';
+let standingsData = STANDINGS;
+
 const FLAGS = {
   'Algeria':'dz','Argentina':'ar','Australia':'au','Austria':'at',
   'Belgium':'be','Bosnia':'ba','Brazil':'br','Canada':'ca',
@@ -455,11 +463,63 @@ function flagImg(team) {
   return `<img src="https://flagcdn.com/w20/${code}.png" alt="" style="width:16px;height:12px;object-fit:cover;border-radius:1px;vertical-align:middle;margin-right:4px;"> `;
 }
 
+function parseCsv(text) {
+  const rows = [];
+  let row = [], cell = '', quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i], next = text[i + 1];
+    if (quoted && ch === '"' && next === '"') { cell += '"'; i++; }
+    else if (ch === '"') quoted = !quoted;
+    else if (!quoted && ch === ',') { row.push(cell); cell = ''; }
+    else if (!quoted && (ch === '\n' || ch === '\r')) {
+      if (ch === '\r' && next === '\n') i++;
+      row.push(cell); rows.push(row); row = []; cell = '';
+    } else {
+      cell += ch;
+    }
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  const [headers, ...dataRows] = rows.filter(r => r.some(c => c.trim() !== ''));
+  return dataRows.map(r => Object.fromEntries(headers.map((h, i) => [h.trim(), (r[i] || '').trim()])));
+}
+
+function num(value) {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : 0;
+}
+
+async function loadRemoteStandings() {
+  try {
+    const response = await fetch(STANDINGS_CSV_URL, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Standings CSV ${response.status}`);
+    const rows = parseCsv(await response.text());
+    const next = {};
+    rows.forEach(r => {
+      const grp = r.group;
+      const country = r.country;
+      if (!grp || !country) return;
+      (next[grp] = next[grp] || []).push([
+        country,
+        num(r.played),
+        num(r.won),
+        num(r.drawn),
+        num(r.lost),
+        num(r.goals_for),
+        num(r.goals_against),
+        num(r.points),
+      ]);
+    });
+    if (Object.keys(next).length) standingsData = next;
+  } catch (err) {
+    console.warn('Using local standings fallback', err);
+  }
+}
+
 function render(highlightTeam) {
   const grid = document.getElementById('groups-grid');
   grid.innerHTML = '';
 
-  Object.entries(STANDINGS).forEach(([grp, teams]) => {
+  Object.entries(standingsData).forEach(([grp, teams]) => {
     // Sort by points desc, then goal diff, then goals for
     const sorted = [...teams].sort((a, b) => {
       if (b[7] !== a[7]) return b[7] - a[7];       // points
@@ -492,10 +552,11 @@ function render(highlightTeam) {
       </tr>`;
     });
 
-    card.innerHTML = `
-      <div class="group-header">
-        <span class="group-letter" style="color:${color}">Group ${grp}</span>
-      </div>
+	    card.innerHTML = `
+	      <div class="group-header">
+	        <span class="group-letter" style="color:${color}">Group ${grp}</span>
+	        <span class="owner-pill">${POOL[grp]}</span>
+	      </div>
       <table class="standings-table">
         <thead>
           <tr>
@@ -523,7 +584,7 @@ document.getElementById('team-select').addEventListener('change', function() {
   render(this.value);
 });
 
-render('none');
+loadRemoteStandings().then(() => render('none'));
 </script>
 
 

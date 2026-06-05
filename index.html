@@ -6,14 +6,11 @@
 <title>FIFA World Cup 2026 Schedule - All 104 Matches with Timezone Converter</title>
 <meta name="description" content="Full FIFA World Cup 2026 schedule with all 104 matches. Convert kick-off times to your local timezone including Melbourne, Sydney, London, New York and more. Group stage and knockout rounds.">
 <meta name="keywords" content="FIFA World Cup 2026 schedule, World Cup 2026 fixtures, World Cup 2026 times, World Cup 2026 AEST, World Cup 2026 Melbourne, World Cup 2026 Australia, World Cup 2026 group stage, World Cup 2026 knockout">
-<meta name="author" content="kingdoggydog">
-<link rel="canonical" href="https://kingdoggydog.github.io/worldcup2026/">
 
 <!-- Open Graph (for Facebook, Reddit, LinkedIn previews) -->
 <meta property="og:title" content="FIFA World Cup 2026 Schedule - Timezone Converter">
 <meta property="og:description" content="All 104 World Cup 2026 matches with kick-off times in your local timezone. Group stage, knockout rounds, team highlighter and printable view.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://kingdoggydog.github.io/worldcup2026/">
 
 <!-- Twitter/X card -->
 <meta name="twitter:card" content="summary">
@@ -89,8 +86,8 @@
   }
 
   /* ── NIGHT MODE: free-flowing web page layout ────────────────────────────── */
-  .page {
-    max-width: 900px;
+	  .page {
+	    max-width: 1100px;
     width: 100%;
     margin: 0 auto;
     padding: 24px 20px 32px 20px;
@@ -110,11 +107,11 @@
   }
 
   /* ── HEADER ──────────────────────────────────────────────────────────────── */
-  .header {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    border-bottom: 2.5px solid var(--header-border);
-    padding-bottom: 12px; margin-bottom: 14px; flex-shrink: 0;
-    gap: 16px; flex-wrap: wrap;
+	  .header {
+	    display: flex; flex-direction: column; align-items: stretch;
+	    border-bottom: 2.5px solid var(--header-border);
+	    padding-bottom: 12px; margin-bottom: 14px; flex-shrink: 0;
+	    gap: 16px; flex-wrap: wrap;
   }
   body.print-mode .header { padding-bottom: 3px; margin-bottom: 4px; align-items: flex-end; flex-wrap: nowrap; }
 
@@ -134,15 +131,26 @@
   }
   body.print-mode .header .sub { font-size: 11px; margin-top: 2px; }
 
-  .header-right {
-    text-align: right; display: flex; flex-direction: column;
-    gap: 8px; align-items: flex-end; flex-shrink: 0;
-  }
-  body.print-mode .header-right { gap: 4px; }
+	  .header-right {
+	    text-align: left; display: flex; flex-direction: row;
+	    gap: 8px; align-items: center; flex-shrink: 1;
+	    flex-wrap: wrap;
+	    min-width: 0;
+	  }
+	  body.print-mode .header-right { gap: 4px; }
 
-  /* ── CONTROLS ────────────────────────────────────────────────────────────── */
-  .ctrl-row { display: flex; align-items: center; gap: 8px; }
-  body.print-mode .ctrl-row { gap: 6px; }
+	  /* ── CONTROLS ────────────────────────────────────────────────────────────── */
+	  .top-toolbar {
+	    display: flex;
+	    align-items: center;
+	    gap: 8px;
+	    flex-wrap: wrap;
+	    margin-top: 8px;
+	    min-width: 0;
+	  }
+	  body.print-mode .top-toolbar { margin-top: 0; }
+	  .ctrl-row { display: flex; align-items: center; gap: 6px; flex-wrap: nowrap; justify-content: flex-start; min-width: 0; }
+	  body.print-mode .ctrl-row { gap: 6px; }
 
   .ctrl-label {
     font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
@@ -151,14 +159,15 @@
   }
   body.print-mode .ctrl-label { font-size: 10px; }
 
-  select {
-    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-    font-size: clamp(12px, 1.8vw, 15px);
-    border: 1.5px solid var(--ctrl-border); border-radius: 4px;
-    padding: 5px 8px;
-    background: var(--ctrl-bg); color: var(--ctrl-text); cursor: pointer;
-    transition: background 0.3s, color 0.3s, border-color 0.3s;
-  }
+	  select {
+	    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+	    font-size: clamp(12px, 1.8vw, 15px);
+	    border: 1.5px solid var(--ctrl-border); border-radius: 4px;
+	    padding: 5px 8px;
+	    background: var(--ctrl-bg); color: var(--ctrl-text); cursor: pointer;
+	    transition: background 0.3s, color 0.3s, border-color 0.3s;
+	    max-width: 170px;
+	  }
   body.print-mode select { font-size: 12px; padding: 2px 5px; border-radius: 3px; }
   select:focus { outline: 2px solid var(--highlight-bl); }
 
@@ -209,7 +218,19 @@
     transition: all 0.2s; white-space: nowrap;
   }
   body.print-mode #knockout-toggle { font-size: 10px; padding: 3px 10px; border-radius: 3px; }
-  #knockout-toggle:hover { opacity: 0.8; }
+	  #knockout-toggle:hover { opacity: 0.8; }
+
+	  #layout-toggle {
+	    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+	    font-size: clamp(11px, 1.5vw, 13px);
+	    letter-spacing: 1px; text-transform: uppercase;
+	    padding: 6px 14px; border-radius: 4px; cursor: pointer;
+	    border: 1.5px solid var(--gold);
+	    background: var(--gold); color: #0A0E1A;
+	    transition: all 0.2s; white-space: nowrap;
+	  }
+	  body.print-mode #layout-toggle { font-size: 10px; padding: 3px 10px; border-radius: 3px; }
+	  #layout-toggle:hover { opacity: 0.8; }
 
   /* knockout section heading */
   .knockout-heading {
@@ -260,59 +281,25 @@
   body.print-mode .legend-dot { width: 8px; height: 8px; border-radius: 1px; }
 
   /* ── SCHEDULE GRID ───────────────────────────────────────────────────────── */
-  .schedule {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 14px 16px; flex: 1; align-content: start;
-  }
+	  .schedule {
+	    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	    gap: 14px 16px; flex: 1; align-content: start;
+	  }
   body.print-mode .schedule { gap: 4px 6px; }
-
-  /* coffee buttons + version (defined once, cleanly) */
-  #bmc-header {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700; font-size: clamp(11px, 1.5vw, 13px);
-    letter-spacing: 1px; text-transform: uppercase;
-    color: var(--gold); text-decoration: none;
-    border: 1.5px solid var(--gold);
-    padding: 6px 14px; border-radius: 4px;
-    display: inline-block; white-space: nowrap;
-    transition: opacity 0.2s;
-  }
-  #bmc-header:hover { opacity: 0.8; }
-  body.print-mode #bmc-header { display: none !important; }
 
   #version { color: var(--text-muted); font-style: italic; }
   body.print-mode #version { color: #888; }
 
-  #bmc-mobile {
-    display: none; text-align: center;
-    margin-top: 16px; padding-top: 12px;
-    border-top: 1px solid var(--border);
-  }
-  #bmc-mobile a {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700; font-size: 14px;
-    letter-spacing: 1px; text-transform: uppercase;
-    color: var(--gold); text-decoration: none;
-    border: 1.5px solid var(--gold);
-    padding: 8px 20px; border-radius: 4px;
-    display: inline-block;
-  }
-  #bmc-mobile a:hover { opacity: 0.8; }
-  body.print-mode #bmc-mobile { display: none !important; }
-
   /* single column + larger text on mobile - night mode only */
   @media screen and (max-width: 900px) {
-    #bmc-header { display: inline-block; }
-    #bmc-mobile { display: block; }
-    /* hide BMC floating widget on mobile */
-    #bmc-wbtn, #bmc-iframe-wrapper, .bmc-btn-container { display: none !important; }
-    body:not(.print-mode) .schedule { grid-template-columns: 1fr !important; }
-    body:not(.print-mode) .header { flex-direction: column; align-items: flex-start; gap: 10px; }
-    body:not(.print-mode) .header-right { align-items: flex-start; text-align: left; width: 100%; }
-    body:not(.print-mode) .ctrl-row { flex-wrap: wrap; gap: 6px; }
-    body:not(.print-mode) select { font-size: 14px; padding: 6px 8px; width: 100%; }
-    body:not(.print-mode) #mode-toggle,
-    body:not(.print-mode) #knockout-toggle { font-size: 12px; padding: 6px 12px; }
+	    body:not(.print-mode) .schedule { grid-template-columns: minmax(0, 1fr) !important; }
+	    body:not(.print-mode) .header { flex-direction: column; align-items: stretch; gap: 10px; }
+	    body:not(.print-mode) .header-right { align-items: center; text-align: left; width: 100%; }
+	    body:not(.print-mode) .ctrl-row { flex-wrap: nowrap; gap: 6px; }
+	    body:not(.print-mode) select { font-size: 14px; padding: 6px 8px; max-width: min(100%, 260px); }
+	    body:not(.print-mode) #mode-toggle,
+	    body:not(.print-mode) #knockout-toggle,
+	    body:not(.print-mode) #layout-toggle { font-size: 12px; padding: 6px 12px; }
     body:not(.print-mode) .match { padding: 8px 10px; margin-bottom: 3px; }
     body:not(.print-mode) .time { font-size: 16px; width: 44px; }
     body:not(.print-mode) .teams { font-size: 14px; }
@@ -404,7 +391,82 @@
   body.print-mode .vs { font-size: 8px; margin: 0 2px; }
 
   .flag { width: 18px; height: 13px; object-fit: cover; border-radius: 2px; vertical-align: middle; flex-shrink: 0; }
-  body.print-mode .flag { width: 15px; height: 11px; border-radius: 1px; }
+	  body.print-mode .flag { width: 15px; height: 11px; border-radius: 1px; }
+
+	  .person-card {
+	    background: var(--bg-card);
+	    border: 1px solid var(--border);
+	    border-left: 3px solid var(--gold);
+	    border-radius: 4px;
+	    padding: 10px;
+	    break-inside: avoid;
+	    min-width: 0;
+	    max-width: 100%;
+	  }
+	  body.print-mode .person-card {
+	    background: transparent;
+	    padding: 4px;
+	    border-left-width: 2px;
+	  }
+		  .person-card.compact {
+		    padding: 0;
+		    overflow: hidden;
+		  }
+		  .person-card.highlighted {
+		    background: var(--highlight-bg);
+		    border-left-color: var(--highlight-bl) !important;
+		  }
+	  .person-header {
+	    display: flex; align-items: baseline; justify-content: space-between;
+	    gap: 10px; border-bottom: 1px solid var(--border-day);
+	    padding-bottom: 5px; margin-bottom: 6px;
+	  }
+	  body.print-mode .person-header { padding-bottom: 2px; margin-bottom: 3px; }
+	  .person-name {
+	    font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+	    font-size: clamp(15px, 2.2vw, 19px); color: var(--gold);
+	    text-transform: uppercase; letter-spacing: 1px;
+	  }
+	  body.print-mode .person-name { font-size: 12px; }
+	  .person-meta {
+	    font-family: 'Barlow Condensed', sans-serif; font-size: clamp(10px, 1.5vw, 12px);
+	    color: var(--text-sub); text-align: right; text-transform: uppercase; letter-spacing: 0.5px;
+	  }
+	  body.print-mode .person-meta { font-size: 8px; }
+	  .person-teams {
+	    font-family: 'Barlow Condensed', sans-serif; font-size: clamp(11px, 1.6vw, 13px);
+	    color: var(--text-sub); margin-bottom: 7px;
+	    min-width: 0;
+	    overflow-wrap: anywhere;
+	  }
+	  body.print-mode .person-teams { font-size: 8.5px; margin-bottom: 3px; }
+	  .person-fixture .date-chip,
+	  .ko-match .date-chip {
+	    width: 54px; flex-shrink: 0;
+	    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+	    font-size: clamp(10px, 1.5vw, 12px); color: var(--text-sub);
+	    text-transform: uppercase;
+	  }
+	  body.print-mode .person-fixture .date-chip,
+	  body.print-mode .ko-match .date-chip { width: 42px; font-size: 8px; }
+
+	  @media screen and (max-width: 560px) {
+	    body:not(.print-mode) .person-header {
+	      align-items: flex-start;
+	      flex-direction: column;
+	      gap: 2px;
+	    }
+	    body:not(.print-mode) .person-meta { text-align: left; }
+	    body:not(.print-mode) .person-fixture,
+	    body:not(.print-mode) .ko-match {
+	      flex-wrap: wrap;
+	    }
+	    body:not(.print-mode) .person-fixture .teams,
+	    body:not(.print-mode) .ko-match .teams {
+	      flex-basis: 100%;
+	      order: 4;
+	    }
+	  }
 
   /* ── FOOTER ──────────────────────────────────────────────────────────────── */
   .footer {
@@ -458,21 +520,18 @@
 
   <div class="header">
     <div>
-      <h1>FIFA World Cup 2026</h1>
-      <div class="sub">All 104 matches &bull; 11 June &ndash; 19 July &bull; USA / Canada / Mexico</div>
-      <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;">
-        <a href="https://www.buymeacoffee.com/coolcato" target="_blank" id="bmc-header">☕ Buy me a coffee</a>
-        <a href="https://kingdoggydog.github.io/worldcup2026/groups.html" class="nav-btn">&#127942; Groups</a>
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="ctrl-row">
-        <button id="mode-toggle">&#9788; Switch to Print Mode</button>
-        <button id="knockout-toggle">Hide Knockout Stage</button>
-      </div>
-      <div class="ctrl-row">
-        <span class="ctrl-label">Timezone</span>
-        <select id="tz-select">
+	      <h1>FIFA World Cup 2026</h1>
+	      <div class="sub">All 104 matches &bull; 11 June &ndash; 19 July &bull; USA / Canada / Mexico</div>
+	      <div class="top-toolbar">
+	        <a href="groups.html" class="nav-btn">&#127942; Groups</a>
+	        <a href="picks.html" class="nav-btn">Group Picks</a>
+	        <div class="header-right">
+		        <button id="layout-toggle">Person</button>
+		        <button id="mode-toggle">Print</button>
+		        <button id="knockout-toggle">Knockout</button>
+	          <div class="ctrl-row">
+	            <span class="ctrl-label">Time</span>
+	            <select id="tz-select">
           <option value="12">Auckland (NZST, UTC+12)</option>
           <option value="11">Solomon Islands (UTC+11)</option>
           <option value="10">Melbourne / Sydney (AEST, UTC+10)</option>
@@ -511,11 +570,11 @@
           <option value="-7">Los Angeles / Vancouver (PDT, UTC-7)</option>
           <option value="-8">Anchorage (AKDT, UTC-8)</option>
           <option value="-10">Honolulu (HST, UTC-10)</option>
-        </select>
-      </div>
-      <div class="ctrl-row">
-        <span class="ctrl-label">Highlight</span>
-        <select id="team-select">
+	            </select>
+	          </div>
+	          <div class="ctrl-row">
+	            <span class="ctrl-label">Pick</span>
+	            <select id="team-select">
           <option value="none" selected>No highlight</option>
           <option value="Algeria">Algeria</option>
           <option value="Argentina">Argentina</option>
@@ -565,24 +624,19 @@
           <option value="Uruguay">Uruguay</option>
           <option value="USA">USA</option>
           <option value="Uzbekistan">Uzbekistan</option>
-        </select>
-      </div>
-      <span class="highlight-note" id="highlight-note">No team highlighted</span>
+	            </select>
+	          </div>
+	          <span class="highlight-note" id="highlight-note">No team highlighted</span>
+	        </div>
+	      </div>
     </div>
   </div>
-
-
-
-  <div class="schedule" id="schedule"></div>
+	  <div class="schedule" id="schedule"></div>
 
   <div class="footer">
-    <p id="footer-tz">All times AEST (UTC+10) &bull; Source: FIFA / Fox Sports 2026 &bull; <span id="version">v1.22</span></p>
+    <p id="footer-tz">All times AEST (UTC+10) &bull; Source: FIFA / Fox Sports 2026 &bull; <span id="version">v1.23</span></p>
     <p>72 group stage matches &bull; 12 groups &bull; Top 2 per group + 8 best 3rd place advance</p>
   </div>
-  <div id="bmc-mobile">
-    <a href="https://www.buymeacoffee.com/coolcato" target="_blank">☕ Buy me a coffee</a>
-  </div>
-
 </div>
 
 <script>
@@ -596,7 +650,7 @@ const MATCHES = [
   { grp:'A', utc:1,    date:'2026-06-25', teams:'Czechia v Mexico',            venue:'Mexico City'   },
   { grp:'A', utc:1,    date:'2026-06-25', teams:'South Africa v South Korea',  venue:'Monterrey'     },
   // Group B
-  { grp:'B', utc:19,   date:'2026-06-12', teams:'Canada v Bosnia & Herz.',     venue:'Toronto'       },
+  { grp:'B', utc:19,   date:'2026-06-12', teams:'Canada v Bosnia',             venue:'Toronto'       },
   { grp:'B', utc:19,   date:'2026-06-13', teams:'Qatar v Switzerland',         venue:'San Francisco' },
   { grp:'B', utc:19,   date:'2026-06-18', teams:'Switzerland v Bosnia',        venue:'Los Angeles'   },
   { grp:'B', utc:22,   date:'2026-06-18', teams:'Canada v Qatar',              venue:'Vancouver'     },
@@ -676,6 +730,21 @@ const MATCHES = [
   { grp:'L', utc:21,   date:'2026-06-27', teams:'Croatia v Ghana',             venue:'Philadelphia'  },
 ];
 
+// One person owns each World Cup group. Replace these placeholders with your real pool.
+const POOL = {
+  A: 'T Dema',
+  B: 'D Tshering',
+  C: 'J Lhamo',
+  D: 'D Phuntsho',
+  E: 'W Dema',
+  F: 'K Choden',
+  G: 'D Bidha',
+  H: 'T Peday',
+  I: 'P Drakpa',
+  J: 'N Dorji',
+  K: 'S Tenzin',
+  L: 'K Wangmo',
+};
 
 // UTC times from kickoffclock CSV. Venues/opponents TBD for knockout rounds.
 // Round labels: R32=Round of 32, R16=Round of 16, QF=Quarter-final, SF=Semi-final, F=Final
@@ -719,7 +788,11 @@ const KNOCKOUT_MATCHES = [
   { grp:'F',   num:'M104',utc:19,   date:'2026-07-19', teams:'FINAL: Win M101 v Win M102', venue:'New York/NJ'},
 ];
 
+const KNOCKOUT_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ9bW7UghzsPOQlaCjufZIjHnPdQV3bN_kBcKMNjrZXJsxXPTgENbBGozlNyYZFbEPQkS0wY_Gle6sA/pub?gid=0&single=true&output=csv';
+let knockoutMatches = KNOCKOUT_MATCHES;
+
 let showKnockout = true;
+let layoutMode = 'countries';
 
 // ISO 3166-1 alpha-2 codes for flagcdn.com
 const FLAGS = {
@@ -737,6 +810,61 @@ const FLAGS = {
   'Turkiye':'tr','Uruguay':'uy','USA':'us','Uzbekistan':'uz',
 };
 
+function parseCsv(text) {
+  const rows = [];
+  let row = [], cell = '', quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i], next = text[i + 1];
+    if (quoted && ch === '"' && next === '"') { cell += '"'; i++; }
+    else if (ch === '"') quoted = !quoted;
+    else if (!quoted && ch === ',') { row.push(cell); cell = ''; }
+    else if (!quoted && (ch === '\n' || ch === '\r')) {
+      if (ch === '\r' && next === '\n') i++;
+      row.push(cell); rows.push(row); row = []; cell = '';
+    } else {
+      cell += ch;
+    }
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  const [headers, ...dataRows] = rows.filter(r => r.some(c => c.trim() !== ''));
+  return dataRows.map(r => Object.fromEntries(headers.map((h, i) => [h.trim(), (r[i] || '').trim()])));
+}
+
+function normalizeDate(value) {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
+  const match = /^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/.exec(value);
+  if (!match) return value;
+  const month = match[1].padStart(2, '0');
+  const day = match[2].padStart(2, '0');
+  const year = match[3].length === 2 ? `20${match[3]}` : match[3];
+  return `${year}-${month}-${day}`;
+}
+
+async function loadRemoteKnockoutFixtures() {
+  try {
+    const response = await fetch(KNOCKOUT_CSV_URL, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Knockout CSV ${response.status}`);
+    const rows = parseCsv(await response.text());
+    const next = rows
+      .filter(r => r.match_id && r.date_utc)
+      .map(r => ({
+        grp: r.round,
+        num: r.match_id,
+        utc: parseFloat(r.kickoff_utc_decimal || '0'),
+        date: normalizeDate(r.date_utc),
+        teams: `${r.home_label} v ${r.away_label}`,
+        venue: r.venue,
+        status: r.status,
+        winner: r.winner,
+        homeScore: r.home_score,
+        awayScore: r.away_score,
+      }));
+    if (next.length) knockoutMatches = next;
+  } catch (err) {
+    console.warn('Using local knockout fallback', err);
+  }
+}
+
 function flagImg(team) {
   const code = FLAGS[team];
   if (!code) return '';
@@ -749,6 +877,25 @@ function teamsHtml(teamsStr) {
   const home = parts[0].trim();
   const away = parts[1].trim();
   return `${flagImg(home)} ${home} <span class="vs">v</span> ${away} ${flagImg(away)}`;
+}
+
+function matchTeams(teamsStr) {
+  const parts = teamsStr.split(' v ');
+  return parts.length === 2 ? parts.map(t => t.trim()) : [];
+}
+
+function includesTeam(teamsStr, team) {
+  return matchTeams(teamsStr).includes(team);
+}
+
+function groupTeams(grp) {
+  const teams = [];
+  MATCHES.filter(m => m.grp === grp).forEach(m => {
+    matchTeams(m.teams).forEach(t => {
+      if (!teams.includes(t)) teams.push(t);
+    });
+  });
+  return teams;
 }
 
 const DAYS   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -776,7 +923,118 @@ function fmtHeader(key) {
   return { name: DAYS[dt.getUTCDay()], date: d + ' ' + MONTHS[m-1] };
 }
 
+function localSortValue(m, offset) {
+  const [y, month, d] = m.date.split('-').map(Number);
+  return Date.UTC(y, month-1, d) + (m.utc + offset) * 3600000;
+}
+
+function formatFixtureDate(m, offset) {
+  const key = localDateKey(m.utc, m.date, offset);
+  const hdr = fmtHeader(key);
+  return `${hdr.name} ${hdr.date}`;
+}
+
+function peopleKnockoutText(teamsStr) {
+  return teamsStr.replace(/\b(Win|2nd|3rd|Loss)\s+([A-L](?:\/[A-L])*)\b/g, (all, prefix, groups) => {
+    const people = groups.split('/').map(g => POOL[g] || `Group ${g}`).join('/');
+    return `${prefix} ${groups} (${people})`;
+  });
+}
+
+function knockoutMentionsPlayer(teamsStr, player) {
+  return [...teamsStr.matchAll(/\b(?:Win|2nd|3rd|Loss)\s+([A-L](?:\/[A-L])*)\b/g)]
+    .some(match => match[1].split('/').some(grp => POOL[grp] === player));
+}
+
+function personAnchor(player) {
+  return 'person-' + player.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+function scrollToPerson(player) {
+  if (layoutMode !== 'people' || player === 'none') return;
+  const el = document.getElementById(personAnchor(player));
+  if (!el) return;
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderPeople(offset, player) {
+  const sched = document.getElementById('schedule');
+  sched.innerHTML = '';
+
+  const heading = document.createElement('div');
+  heading.className = 'knockout-heading';
+  heading.innerHTML = '<h2>Fixtures By Person</h2><span class="ko-sub">Each person owns all teams in their group</span>';
+  sched.appendChild(heading);
+
+  Object.keys(POOL).forEach(grp => {
+    const person = POOL[grp];
+    const matches = MATCHES
+      .filter(m => m.grp === grp)
+      .sort((a,b) => localSortValue(a, offset) - localSortValue(b, offset));
+    const teams = groupTeams(grp);
+    const div = document.createElement('div');
+    const personHighlighted = player !== 'none' && person === player;
+    div.className = personHighlighted ? 'person-card highlighted' : 'person-card';
+    div.id = personAnchor(person);
+    div.style.borderLeftColor = `var(--${grp}, var(--gold))`;
+
+    let html = `<div class="person-header">
+      <span class="person-name">${person}</span>
+      <span class="person-meta">Group <span class="${grp}">${grp}</span> &bull; ${teams.length} teams</span>
+    </div>
+    <div class="person-teams">${teams.map(t => `${flagImg(t)}${t}`).join(' &bull; ')}</div>`;
+
+    matches.forEach(m => {
+      const t = formatTime(m.utc + offset);
+      const hi = personHighlighted;
+      const cls = hi ? ' highlighted person-fixture' : ' person-fixture';
+      html += `<div class="match${cls}">
+        <span class="date-chip">${formatFixtureDate(m, offset)}</span>
+        <span class="time">${t}</span>
+        <span class="teams">${teamsHtml(m.teams)}</span>
+        <span class="venue">${m.venue}</span>
+      </div>`;
+    });
+
+    div.innerHTML = html;
+    sched.appendChild(div);
+  });
+
+  if (showKnockout) {
+    const heading = document.createElement('div');
+    heading.className = 'knockout-heading';
+    heading.innerHTML = '<h2>Knockout Paths</h2><span class="ko-sub">Mapped back to group owners where possible</span>';
+    sched.appendChild(heading);
+
+    const koColors = { R32:'#7A82A8', R16:'#5DADE2', QF:'#A569BD', SF:'#EC407A', '3rd':'#1ABC9C', F:'#C9A84C' };
+    knockoutMatches
+      .slice()
+      .sort((a,b) => localSortValue(a, offset) - localSortValue(b, offset))
+      .forEach(m => {
+        const div = document.createElement('div');
+        const cls = player !== 'none' && knockoutMentionsPlayer(m.teams, player) ? 'match highlighted ko-match' : 'match ko-match';
+        div.className = cls;
+        div.innerHTML = `
+          <span style="font-family:'Barlow Condensed',sans-serif;flex-shrink:0;width:80px;color:${koColors[m.grp]||'#7A82A8'}"><span style="font-weight:700;font-size:17px">${m.grp}</span> <span style="font-weight:400;font-size:14px">${m.num}</span></span>
+          <span class="date-chip">${formatFixtureDate(m, offset)}</span>
+          <span class="time">${formatTime(m.utc + offset)}</span>
+          <span class="teams">${peopleKnockoutText(m.teams)}</span>
+          <span class="venue">${m.venue}</span>`;
+        sched.appendChild(div);
+      });
+  }
+}
+
 function render(offset, team) {
+  if (layoutMode === 'people') {
+    renderPeople(offset, team);
+    document.getElementById('footer-tz').innerHTML =
+      `Person layout &bull; All times UTC${offset >= 0 ? '+' : ''}${offset} &bull; <span id="version" style="color:var(--text-muted);font-style:italic">v1.23</span>`;
+    document.getElementById('highlight-note').textContent =
+      team === 'none' ? 'No person highlighted' : `Showing ${team}'s fixtures`;
+    return;
+  }
+
   const buckets = {};
   MATCHES.forEach(m => {
     const k = localDateKey(m.utc, m.date, offset);
@@ -798,7 +1056,7 @@ function render(offset, team) {
     let html = `<div class="day-header"><span class="day-name">${hdr.name}</span><span class="day-date">${hdr.date}</span></div>`;
     buckets[k].forEach(m => {
       const t   = formatTime(m.utc + offset);
-      const hi  = team !== 'none' && m.teams.includes(team);
+      const hi  = team !== 'none' && includesTeam(m.teams, team);
       const cls = hi ? ' highlighted' : '';
       html += `<div class="match${cls}">
         <span class="grp ${m.grp}">${m.grp}</span>
@@ -821,7 +1079,7 @@ function render(offset, team) {
 
     // Bucket knockout matches by local date
     const koBuckets = {};
-    KNOCKOUT_MATCHES.forEach(m => {
+    knockoutMatches.forEach(m => {
       const k = localDateKey(m.utc, m.date, offset);
       (koBuckets[k] = koBuckets[k] || []).push(m);
     });
@@ -841,7 +1099,7 @@ function render(offset, team) {
       let html = `<div class="day-header"><span class="day-name">${hdr.name}</span><span class="day-date">${hdr.date}</span></div>`;
       koBuckets[k].forEach(m => {
         const t  = formatTime(m.utc + offset);
-        const hi = team !== 'none' && m.teams.includes(team);
+        const hi = team !== 'none' && includesTeam(m.teams, team);
         const cls = hi ? ' highlighted ko-match' : ' ko-match';
         const grpStyle = `style="color:var(--ko-${m.grp}, #7A82A8)"`;
         html += `<div class="match${cls}">
@@ -862,7 +1120,7 @@ function render(offset, team) {
     ? `UTC${sign}${Math.floor(offset)}:${Math.abs((offset%1)*60) === 30 ? '30':'00'}`
     : `UTC${sign}${offset}`;
   document.getElementById('footer-tz').innerHTML =
-    `All times ${lbl} \u2022 Source: FIFA / Fox Sports 2026 \u2022 <span id="version" style="color:var(--text-muted);font-style:italic">v1.22</span>`;
+    `All times ${lbl} \u2022 Source: FIFA / Fox Sports 2026 \u2022 <span id="version" style="color:var(--text-muted);font-style:italic">v1.23</span>`;
 
   document.getElementById('highlight-note').textContent =
     team === 'none' ? 'No team highlighted' : `Showing ${team}'s matches`;
@@ -875,27 +1133,57 @@ function getState() {
   };
 }
 
+const countryOptions = Array.from(document.getElementById('team-select').options)
+  .filter(o => o.value !== 'none')
+  .map(o => ({ value: o.value, label: o.textContent }));
+
+function playerOptions() {
+  return Object.values(POOL).map(player => ({ value: player, label: player }));
+}
+
+function setHighlightOptions(mode) {
+  const sel = document.getElementById('team-select');
+  const options = mode === 'people' ? playerOptions() : countryOptions;
+  sel.innerHTML = '<option value="none" selected>No highlight</option>' +
+    options.map(o => `<option value="${o.value}">${o.label}</option>`).join('');
+}
+
 document.getElementById('tz-select').addEventListener('change', () => { const s=getState(); render(s.offset,s.team); });
-document.getElementById('team-select').addEventListener('change', () => { const s=getState(); render(s.offset,s.team); });
+document.getElementById('team-select').addEventListener('change', () => {
+  const s=getState();
+  render(s.offset,s.team);
+  scrollToPerson(s.team);
+});
+
+const layoutBtn = document.getElementById('layout-toggle');
+layoutBtn.addEventListener('click', () => {
+  layoutMode = layoutMode === 'countries' ? 'people' : 'countries';
+	  layoutBtn.textContent = layoutMode === 'countries' ? 'Person' : 'Countries';
+  setHighlightOptions(layoutMode);
+  const s = getState();
+  render(s.offset, s.team);
+});
 
 // Mode toggle
 const btn = document.getElementById('mode-toggle');
 btn.addEventListener('click', () => {
   const isPrint = document.body.classList.toggle('print-mode');
-  btn.textContent = isPrint ? '\u2600 Switch to Night Mode' : '\u2788 Switch to Print Mode';
+  btn.textContent = isPrint ? 'Night' : 'Print';
 });
 
 // Knockout toggle
 const koBtn = document.getElementById('knockout-toggle');
 koBtn.addEventListener('click', () => {
   showKnockout = !showKnockout;
-  koBtn.textContent = showKnockout ? 'Hide Knockout Stage' : 'Show Knockout Stage';
+  koBtn.textContent = showKnockout ? 'Knockout' : 'No Knockout';
   const s = getState();
   render(s.offset, s.team);
 });
 
 // Auto-detect user timezone and select matching dropdown option
-(function() {
+(async function() {
+  await loadRemoteKnockoutFixtures();
+
   // Map IANA timezone strings to UTC offset values matching our dropdown
   const TZ_MAP = {
     // Oceania
@@ -991,9 +1279,6 @@ koBtn.addEventListener('click', () => {
   render(parseFloat(sel.options[bestIdx].value), 'none');
 })();
 </script>
-
-<!-- Buy Me a Coffee widget -->
-<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="coolcato" data-description="Support me on Buy me a coffee!" data-message="" data-color="#C9A84C" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 
 </body>
 </html>
